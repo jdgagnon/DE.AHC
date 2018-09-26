@@ -20,7 +20,7 @@ runDEAHCapp <- function(...)
 {
   appDir <- system.file("app", package = "DE.AHC")
   if (appDir == "") {
-    stop("Could not find directory. Try re-installing DE_AHC",
+    stop("Could not find directory. Try re-installing DE.AHC",
          call. = FALSE)
   }
   shiny::runApp(appDir, launch.browser = TRUE, ...)

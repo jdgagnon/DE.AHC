@@ -58,11 +58,11 @@ server <- function(input, output, session) {
 
   readData_example <- function(path = NULL) {
     if (is.null(path)) {
-      dir(system.file("app/www", package = "DE.AGO2.HITS.CLIP"))
+      dir(system.file("app/www", package = "DE.AHC"))
     } else {
       system.file("app/www",
                   path,
-                  package = "DE.AGO2.HITS.CLIP",
+                  package = "DE.AHC",
                   mustWork = TRUE)
     }
   }
@@ -116,7 +116,7 @@ server <- function(input, output, session) {
   heatPlot <- reactive({
     filter <- input$filter
     cuttoff <- input$cuttoff
-    DE.AGO2.HITS.CLIP::heatmaper(data = df2(),
+    DE.AHC::heatmaper(data = df2(),
                                filter = filter,
                                cuttoff = cuttoff,
                                y.text = y.text()
