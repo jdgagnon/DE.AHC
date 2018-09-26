@@ -18,7 +18,7 @@
 #' @export
 runDEAHCapp <- function(...)
 {
-  appDir <- system.file("app", package = "DE_AHC")
+  appDir <- system.file("app", package = "DE.AHC")
   if (appDir == "") {
     stop("Could not find directory. Try re-installing DE_AHC",
          call. = FALSE)
