@@ -12,8 +12,6 @@
 #' @rawNamespace import(Hmisc, except = c(summarize, src))
 #' @return Plot
 #' @param ... Any argument that you can pass to shiny::runApp
-#' @examples
-#' # microRNA.TEvMP()
 #' @return Runs the shiny app.
 #' @export
 runDEAHCapp <- function(...)
