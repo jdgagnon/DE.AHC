@@ -114,6 +114,9 @@ server <- function(input, output, session) {
   })
 
   heatPlot <- reactive({
+    req(input$pathway,
+        pathway_names,
+        input$gene)
     filter <- input$filter
     cuttoff <- input$cuttoff
     DE.AHC::heatmaper(data = df2(),
