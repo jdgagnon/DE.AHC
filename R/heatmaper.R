@@ -14,7 +14,7 @@
 heatmaper <- function(data,
                    filter = 'PValue',
                    cuttoff = 0.05,
-                   start = 10,
+                   start = 9,
                    y.text = ggplot2::element_blank())
 {
 
