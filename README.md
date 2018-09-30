@@ -53,6 +53,29 @@ devtools::install_github("jdgagnon/DE.AHC")
     Toggle checkbox to filter genes that contain miR-15/16 seed-matches
     in their 3’UTR
 
+<!-- end list -->
+
+  - Load your own differential expression data file
+
+  - File should be structured
+    like:
+    
+    | Gene l | ogFC  | PValue    |   FDR    | WT\_1 | WT\_2 | WT\_3 c | KO\_1 c | KO\_2 c | KO\_3 |
+    | ------ | :---- | :-------- | :------: | :---- | :---- | ------- | ------- | ------- | :---- |
+    | Cd28   | 2.4 3 | .42e-05 0 | .0004244 | 50    | 48    | 49      | 62      | 58      | 60    |
+    | etc…   | etc…  | etc…      |   etc…   | etc…  | etc…  | etc…    | etc…    | etc…    | etc…  |
+    
+
+  - Load your own AGO2 HITS-CLIP data file
+
+  - File should be structured like:
+    
+    | Gene L | ocation |        miR T | argetscan | Sum  |
+    | ------ | :------ | -----------: | :-------- | :--- |
+    | Cd28   | 3UTR m  | mu-miR-16-5p | TRUE      | 2899 |
+    | etc…   | etc…    |         etc… | etc…      | etc… |
+    
+
 ## Session info
 
 Here is the output of `sessionInfo()` on the system on which this
@@ -77,8 +100,8 @@ sessionInfo()
 #> loaded via a namespace (and not attached):
 #>  [1] compiler_3.5.1  backports_1.1.2 magrittr_1.5    rprojroot_1.3-2
 #>  [5] tools_3.5.1     htmltools_0.3.6 yaml_2.2.0      Rcpp_0.12.18   
-#>  [9] stringi_1.2.4   rmarkdown_1.10  knitr_1.20      stringr_1.3.1  
-#> [13] digest_0.6.17   evaluate_0.11
+#>  [9] stringi_1.2.4   rmarkdown_1.10  highr_0.7       knitr_1.20     
+#> [13] stringr_1.3.1   digest_0.6.17   evaluate_0.11
 ```
 
 <br><br>
