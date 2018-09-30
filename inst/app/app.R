@@ -14,9 +14,6 @@ ui <-
         fluidPage(
           ##### Plot sidebarPanel ####
           sidebarPanel(
-            h4("Load data"),
-            actionButton("loadDE",
-                         "Load miR-15/16 DE data"),
             fileInput("deFile",
                       "DE file:"),
             fileInput("ahcFile",
@@ -54,7 +51,8 @@ ui <-
               "gene",
               "Gene(s)",
               multiple = TRUE,
-              choices = "all"
+              choices = "all",
+              selected = "all"
             )),
           mainPanel(
             #### Plot ####
@@ -79,6 +77,13 @@ server <- function(input, output, session) {
     }
   }
 
+  pathways_file <- readData_example("pathways.csv")
+  pathways <- readr::read_csv(pathways_file, col_names = TRUE)
+  pathway_names <- colnames(pathways)[which(colnames(pathways) != "Gene")]
+  updateSelectInput(session,
+                    "pathway",
+                    choices = c("none", pathway_names))
+
   y.text <- reactiveVal(ggplot2::element_blank())
   dfDE <- reactiveVal(NULL)
   dfAHC <- reactiveVal(NULL)
@@ -90,26 +95,29 @@ server <- function(input, output, session) {
                     "miRNA",
                     choices = miRNA_list,
                     selected = "mmu-miR-16-5p")
+  de_file <- readData_example("expression.csv")
+  de_df <- readr::read_csv(de_file, col_names = TRUE)
+  allGenes <- de_df$Gene
+  updateSelectInput(session,
+                    "gene",
+                    choices = c("all", allGenes),
+                    selected = "all")
+  dfDE(de_df)
 
-  observeEvent({
-    input$loadDE}, {
-      de_file <- readData_example("expression.csv")
-      de_df <- readr::read_csv(de_file, col_names = TRUE)
-      dfDE(de_df)
-  })
 
   observeEvent({
     input$miRNA}, {
       req(input$miRNA)
-      miR_file <- paste0(input$miRNA, "_ahc.csv")
-      print(miR_file)
-      ahc_file <- readData_example(miR_file)
-      ahc_df <- readr::read_csv(ahc_file, col_names = TRUE)
-      dfAHC(ahc_df)
+      if (input$miRNA != "User defined") {
+        miR_file <- paste0(input$miRNA, "_ahc.csv")
+        print(miR_file)
+        ahc_file <- readData_example(miR_file)
+        ahc_df <- readr::read_csv(ahc_file, col_names = TRUE)
+        dfAHC(ahc_df)
+      }
   }, priority = 10)
 
   observeEvent({
-    input$loadDE
     input$miRNA}, {
       req(dfDE(),
           dfAHC())
@@ -118,25 +126,21 @@ server <- function(input, output, session) {
       df1(dplyr::full_join(ahc, de, by = "Gene"))
   }, priority = 1)
 
-  pathways_file <- readData_example("pathways.csv")
-  pathways <- readr::read_csv(pathways_file, col_names = TRUE)
-  pathway_names <- colnames(pathways)[which(colnames(pathways) != "Gene")]
-  updateSelectInput(session,
-                    "pathway",
-                    choices = c("none", pathway_names))
-  # allGenes <- df_nr$Gene
-  # updateSelectInput(session,
-  #                   "gene",
-  #                   choices = c("all", allGenes),
-  #                   selected = "all")
+
+
 
   observeEvent({
     input$deFile
     input$ahcFile}, {
       req(input$deFile,
           input$ahcFile)
-      deData <- readr::read_csv(input$deFile$datapath, col_names = TRUE)
-      ahcData <- readr::read_csv(input$ahcFile$datapath, col_names = TRUE)
+      de <- readr::read_csv(input$deFile$datapath, col_names = TRUE)
+      ahc <- readr::read_csv(input$ahcFile$datapath, col_names = TRUE)
+      df1(dplyr::full_join(ahc, de, by = "Gene"))
+      updateSelectInput(session,
+                        "miRNA",
+                        choices = c("User defined", miRNA_list),
+                        selected = "User defined")
   })
 
 
