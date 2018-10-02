@@ -17,6 +17,3 @@ Runs the shiny app.
 \description{
 This function runs the app
 }
-\examples{
-# microRNA.TEvMP()
-}

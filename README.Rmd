@@ -69,8 +69,7 @@ knitr::kable(
   matrix(c("Cd28", 2.4, 0.0000342, 0.0004244, 50, 48, 49, 62, 58, 60,
            rep("etc...", 10)), 
          ncol = 10, byrow = T), 
-  col.names = c("Gene", "logFC", "PValue", "FDR", "WT_1", "WT_2", "WT_3", "cKO_1", "cKO_2", "cKO_3"), 
-  align = "c")
+  col.names = c("Gene", "logFC", "PValue", "FDR", "WT_1", "WT_2", "WT_3", "cKO_1", "cKO_2", "cKO_3"))
 ```
 
 * Load your own AGO2 HITS-CLIP data file
@@ -81,8 +80,7 @@ knitr::kable(
   matrix(c("Cd28", "3UTR", "mmu-miR-16-5p", TRUE, 2899,
            rep("etc...", 5)), 
          ncol = 5, byrow = T), 
-  col.names = c("Gene", "Location", "miR", "Targetscan", "Sum"), 
-  align = "c")
+  col.names = c("Gene", "Location", "miR", "Targetscan", "Sum"))
 ```
 
 ## Session info

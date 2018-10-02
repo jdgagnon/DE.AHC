@@ -56,25 +56,21 @@ devtools::install_github("jdgagnon/DE.AHC")
 <!-- end list -->
 
   - Load your own differential expression data file
-
   - File should be structured
-    like:
-    
-    | Gene l | ogFC  | PValue    |   FDR    | WT\_1 | WT\_2 | WT\_3 c | KO\_1 c | KO\_2 c | KO\_3 |
-    | ------ | :---- | :-------- | :------: | :---- | :---- | ------- | ------- | ------- | :---- |
-    | Cd28   | 2.4 3 | .42e-05 0 | .0004244 | 50    | 48    | 49      | 62      | 58      | 60    |
-    | etc…   | etc…  | etc…      |   etc…   | etc…  | etc…  | etc…    | etc…    | etc…    | etc…  |
-    
+like:
+
+| Gene | logFC | PValue   | FDR       | WT\_1 | WT\_2 | WT\_3 | cKO\_1 | cKO\_2 | cKO\_3 |
+| :--- | :---- | :------- | :-------- | :---- | :---- | :---- | :----- | :----- | :----- |
+| Cd28 | 2.4   | 3.42e-05 | 0.0004244 | 50    | 48    | 49    | 62     | 58     | 60     |
+| etc… | etc…  | etc…     | etc…      | etc…  | etc…  | etc…  | etc…   | etc…   | etc…   |
 
   - Load your own AGO2 HITS-CLIP data file
-
   - File should be structured like:
-    
-    | Gene L | ocation |        miR T | argetscan | Sum  |
-    | ------ | :------ | -----------: | :-------- | :--- |
-    | Cd28   | 3UTR m  | mu-miR-16-5p | TRUE      | 2899 |
-    | etc…   | etc…    |         etc… | etc…      | etc… |
-    
+
+| Gene | Location | miR           | Targetscan | Sum  |
+| :--- | :------- | :------------ | :--------- | :--- |
+| Cd28 | 3UTR     | mmu-miR-16-5p | TRUE       | 2899 |
+| etc… | etc…     | etc…          | etc…       | etc… |
 
 ## Session info
 

@@ -5,7 +5,7 @@
 \title{Hetmap function
 Create a heatmap based on data with specified cuffoff values}
 \usage{
-heatmaper(data, filter = "PValue", cuttoff = 0.05, start = 10,
+heatmaper(data, filter = "PValue", cuttoff = 0.05, start = 9,
   y.text = ggplot2::element_blank())
 }
 \arguments{

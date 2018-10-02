@@ -2,7 +2,9 @@
 #' Hetmap function
 #' Create a heatmap based on data with specified cuffoff values
 #'
-#' @import tidyverse
+#' @import ggplot2
+#' @import dplyr
+#' @import rlang
 #' @import viridis
 #' @import egg
 #' @import magrittr

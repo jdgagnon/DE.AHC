@@ -8,7 +8,9 @@ Description: Visualization of miR-15/16 DE data coupled with AGO2 HITS-CLIP
   analysis.
 Depends: R (>= 3.5)
 Imports: 
-  tidyverse, 
+  ggplot2,
+  dplyr,
+  rlang,
   viridis, 
   shiny, 
   grid, 

@@ -5,7 +5,9 @@
 #'
 #' This function runs the app
 #' @import shiny
-#' @import tidyverse
+#' @import ggplot2
+#' @import dplyr
+#' @import rlang
 #' @import egg
 #' @import gridExtra
 #' @import magrittr
