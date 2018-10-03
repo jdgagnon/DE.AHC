@@ -191,7 +191,9 @@ server <- function(input, output, session) {
   })
 
   output$myPlot <- renderPlot({
-    heatPlot()
+    withProgress(message = "Making plot.", {
+      heatPlot()
+    })
   })
 
   #### Stop app on close ####
