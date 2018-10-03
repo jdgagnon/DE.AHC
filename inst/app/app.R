@@ -110,7 +110,6 @@ server <- function(input, output, session) {
       req(input$miRNA)
       if (input$miRNA != "User defined") {
         miR_file <- paste0(input$miRNA, "_ahc.csv")
-        print(miR_file)
         ahc_file <- readData_example(miR_file)
         ahc_df <- readr::read_csv(ahc_file, col_names = TRUE)
         dfAHC(ahc_df)
