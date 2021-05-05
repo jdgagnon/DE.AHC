@@ -34,8 +34,8 @@ along with AGO2 HITS-CLIP data for each gene.
 <!-- end list -->
 
 ``` r
-install.packages("devtools")
-devtools::install_github("jdgagnon/DE.AHC")
+install.packages(“remotes”)
+remotes::install_github("jgagnon/DE.AHC”)
 ```
 
 ## Usage
